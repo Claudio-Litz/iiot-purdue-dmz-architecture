@@ -1,0 +1,49 @@
+services:
+  mosquitto:
+    image: eclipse-mosquitto:2
+    container_name: iiots_mosquitto
+    restart: unless-stopped
+    ports:
+      - "1883:1883"
+    volumes:
+      - ./mosquitto/config:/mosquitto/config
+      - mosquitto_data:/mosquitto/data
+    networks:
+      - dmz_ot_net
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: iiots_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: iiots_admin
+      POSTGRES_PASSWORD: CHANGE_ME_DB_PASSWORD
+      POSTGRES_DB: iiots_historian
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./postgres/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    networks:
+      - it_db_net
+
+  ingestor:
+    build: ../ingestor-service
+    container_name: iiots_ingestor
+    restart: unless-stopped
+    depends_on:
+      - mosquitto
+      - postgres
+    networks:
+      - dmz_ot_net
+      - it_db_net
+
+networks:
+  dmz_ot_net:
+    driver: bridge
+  it_db_net:
+    driver: bridge
+
+volumes:
+  mosquitto_data:
+  postgres_data:

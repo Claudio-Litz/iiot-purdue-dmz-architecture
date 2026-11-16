@@ -1,0 +1,18 @@
+# ESP32 (Nível 1 - Campo)
+user esp32_campo
+topic write planta/servidor/telemetria
+topic write planta/servidor/alarme
+topic read planta/servidor/comando/ventoinha
+
+# Gateway Windows (Nível 2 - Borda)
+user edge_windows
+topic write planta/linha1/#
+
+# Tablet/Celular (Nível 2.5 - IHM Operador)
+user ihm_operador
+topic read planta/#
+topic write planta/servidor/comando/#
+
+# Ingestor Python (Nível 3 - Historiador)
+user ingestor_db
+topic read planta/#

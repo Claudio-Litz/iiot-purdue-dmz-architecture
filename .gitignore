@@ -1,0 +1,20 @@
+# Credenciais e Segredos
+**/mosquitto/config/passwd
+.env
+*.pem
+*.key
+
+# Bancos de dados e volumes locais
+*.db
+*.sqlite
+*.sqlite3
+postgres_data/
+mosquitto_data/
+
+# Ambientes Python e Sistema
+venv/
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db

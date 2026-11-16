@@ -1,0 +1,5 @@
+# Gere as credenciais reais executando:
+# docker exec -it iiots_mosquitto mosquitto_passwd -c -b /mosquitto/config/passwd esp32_campo <SENHA>
+# docker exec -it iiots_mosquitto mosquitto_passwd -b /mosquitto/config/passwd edge_windows <SENHA>
+# docker exec -it iiots_mosquitto mosquitto_passwd -b /mosquitto/config/passwd ihm_operador <SENHA>
+# docker exec -it iiots_mosquitto mosquitto_passwd -b /mosquitto/config/passwd ingestor_db <SENHA>

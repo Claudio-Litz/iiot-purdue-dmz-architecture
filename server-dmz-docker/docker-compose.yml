@@ -15,10 +15,8 @@ services:
     image: postgres:16-alpine
     container_name: iiots_postgres
     restart: unless-stopped
-    environment:
-      POSTGRES_USER: iiots_admin
-      POSTGRES_PASSWORD: CHANGE_ME_DB_PASSWORD
-      POSTGRES_DB: iiots_historian
+    env_file:
+      - .env
     ports:
       - "5432:5432"
     volumes:
@@ -34,6 +32,12 @@ services:
     depends_on:
       - mosquitto
       - postgres
+    environment:
+      PG_USER: ${POSTGRES_USER}
+      PG_PASS: ${POSTGRES_PASSWORD}
+      PG_DB: ${POSTGRES_DB}
+      MQTT_USER: ${MQTT_INGESTOR_USER}
+      MQTT_PASS: ${MQTT_INGESTOR_PASS}
     networks:
       - dmz_ot_net
       - it_db_net

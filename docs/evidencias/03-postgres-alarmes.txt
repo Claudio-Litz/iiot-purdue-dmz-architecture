@@ -1,0 +1,4 @@
+ id | origem | severidade | mensagem | reconhecido | registrado_em 
+----+--------+------------+----------+-------------+---------------
+(0 rows)
+

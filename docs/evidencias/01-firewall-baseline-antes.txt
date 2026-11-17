@@ -1,0 +1,2 @@
+Chain DOCKER-USER (1 references)
+num   pkts bytes target     prot opt in     out     source               destination         

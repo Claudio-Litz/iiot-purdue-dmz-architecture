@@ -1,0 +1,4 @@
+ id | origem | topico | payload | registrado_em 
+----+--------+--------+---------+---------------
+(0 rows)
+

@@ -1,0 +1,6 @@
+Chain DOCKER-USER (1 references)
+num   pkts bytes target     prot opt in     out     source               destination         
+1        0     0 ACCEPT     tcp  --  *      *       172.16.0.0/12        0.0.0.0/0            tcp dpt:1883
+2        4   240 DROP       tcp  --  *      *      !192.168.1.66         0.0.0.0/0            tcp dpt:1883
+3        0     0 DROP       tcp  --  *      *      !172.16.0.0/12        0.0.0.0/0            tcp dpt:5432
+4      575  106K RETURN     all  --  *      *       0.0.0.0/0            0.0.0.0/0           

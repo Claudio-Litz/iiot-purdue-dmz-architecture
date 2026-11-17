@@ -1,0 +1,6 @@
+NAMES             IMAGE                        STATUS        PORTS
+iiots_ingestor    server-dmz-docker-ingestor   Up 3 months   
+iiots_postgres    postgres:16-alpine           Up 3 months   0.0.0.0:5432->5432/tcp, [::]:5432->5432/tcp
+iiots_mosquitto   eclipse-mosquitto:2          Up 3 months   0.0.0.0:1883->1883/tcp, [::]:1883->1883/tcp
+server-dmz-docker_dmz_ot_net: iiots_ingestor iiots_mosquitto 
+server-dmz-docker_it_db_net: iiots_postgres iiots_ingestor 
